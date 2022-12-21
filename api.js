@@ -24,8 +24,8 @@ app.post('/addstudent', (req, res) => {
     console.log(req.body);
     XLSX.utils.sheet_add_aoa(worksheet, [[req.body.name, req.body.age, req.body.email]], { origin: -1 });
     XLSX.writeFile(workbook, "students.xlsx");
-    students.push({ name: req.body.name, age: req.body.age, email: req.body.email });
-    //students = XLSX.utils.sheet_to_json(worksheet);
+    //students.push({ name: req.body.name, age: req.body.age, email: req.body.email });
+    students = XLSX.utils.sheet_to_json(worksheet);
     res.send(students)
   })
 
